@@ -25,7 +25,7 @@ Command(s)                     Description
 h,help,-help                   shows this help file
 help-examples                  shows how to use with example sessions
 commands                       shows list of '-d' docker commands or '-oc' openshift commands                                   
-ver,version                    show current version infromation                  
+ver,version                    show current version information                  
 config:save                    save d configuration preferences. $1: "option:setting"
 create                         create d file. $1: image name; $2: container name 
 check,who                      manual check d.txt file data is valid             
