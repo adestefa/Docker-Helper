@@ -1,0 +1,43 @@
+    INFO      D: OpenShift commands:
+    
+     oc login <params>
+     oc login --sso
+     get a passcode from https://iam.cloud.ibm.com/idenity/passcode
+     oc login -u passcode -p  <iam_passcode> --server=<master_url>
+     oc whoami
+     oc whoami -t
+     oc status
+     oc get all
+     oc projects
+     oc project <project-name>
+     oc get pods
+     oc get services
+     oc get deployments
+     oc describe <resource>
+     oc describe pod <pod-name>
+     oc describe service <service-name>
+     oc describe deployment <deployment-name>
+     oc scale --replicas=<num> <resource>/<name>
+     oc config view
+     oc config set-context <context-name>
+     oc help
+     oc explain pods
+     
+    A.
+      > oc process -f template.yaml -o yaml > generated.yaml
+      > kubectl apply -f generated.yaml
+
+    B. 
+      > REGISTRY=my.registry.com
+      > INGRESS_HOST=my.internal.openshift-cluster.com
+      > oc process -f template.yaml --param-file=secrets/parameters.env -o yaml > generated.yaml
+
+     
+     EXAMPLES:
+     oc get pod mypod2
+     oc describe pod mypod2
+     oc logs mypod2 -c <container-name>
+     oc exec mypod2 -- /bin/bash
+     oc rsh mypod2
+     oc scale --replicas=3 deployment/myapp
+     oc logout

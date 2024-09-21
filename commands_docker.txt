@@ -1,0 +1,83 @@
+# Display Docker version information
+docker --version
+
+# Show Docker system information
+docker info
+
+# Manage images
+docker images           # List all images on the local machine
+docker pull <image>     # Download an image from a registry (e.g., docker pull ubuntu)
+docker rmi <image>      # Remove an image from the local machine
+
+# Manage containers
+docker ps               # List running containers
+docker ps -a            # List all containers (including stopped)
+docker run <image>      # Run a new container from an image
+docker run -it <image>  # Run a container interactively (with a terminal)
+docker run -d <image>   # Run a container in detached mode (in the background)
+docker exec -it <container> <command>   # Execute a command inside a running container (e.g., docker exec -it my_container bash)
+docker start <container>    # Start a stopped container
+docker stop <container>     # Stop a running container
+docker restart <container>  # Restart a container
+docker kill <container>     # Forcefully stop a running container
+docker rm <container>       # Remove a stopped container
+docker rm -f <container>    # Forcefully remove a container
+
+# Managing container logs and output
+docker logs <container>     # Display logs of a container
+docker logs -f <container>  # Follow the logs of a container in real-time
+docker top <container>      # Display running processes inside a container
+docker inspect <container>  # Display detailed information about a container or image
+docker stats <container>    # Show resource usage statistics of a container
+
+# Working with Docker volumes and networks
+docker volume create <volume>   # Create a new volume
+docker volume ls                # List all volumes
+docker volume rm <volume>       # Remove a volume
+docker network create <network> # Create a new network
+docker network ls               # List all networks
+docker network rm <network>     # Remove a network
+docker network connect <network> <container>  # Connect a container to a network
+docker network disconnect <network> <container>  # Disconnect a container from a network
+
+# Build images
+docker build -t <image_name> .  # Build an image from a Dockerfile in the current directory
+docker build -t <image_name>:<tag> .  # Build an image and assign a tag (e.g., docker build -t my_app:1.0 .)
+
+# Tagging and pushing images to a registry
+docker tag <image_id> <repository>:<tag>  # Tag an image for pushing to a registry (e.g., docker tag my_image my_repo/my_image:latest)
+docker push <repository>:<tag>  # Push an image to a Docker registry (e.g., docker push my_repo/my_image:latest)
+
+# Docker Compose commands
+docker-compose up                # Build, create, start, and attach to containers for a service
+docker-compose up -d             # Start containers in detached mode
+docker-compose down              # Stop and remove containers, networks, and volumes
+docker-compose build             # Build or rebuild services defined in the docker-compose.yml file
+docker-compose logs              # View output from containers
+docker-compose ps                # List containers
+docker-compose exec <service> <command>  # Execute a command inside a service container
+
+# Docker container cleanup
+docker system prune -a           # Remove all unused containers, images, networks, and volumes
+docker container prune           # Remove all stopped containers
+docker image prune               # Remove unused images
+docker volume prune              # Remove all unused volumes
+docker network prune             # Remove all unused networks
+
+# Docker context management (useful for managing multiple Docker hosts)
+docker context create <name> --description <desc>  # Create a new context
+docker context ls                                 # List available contexts
+docker context use <name>                         # Switch to a different context
+docker context rm <name>                          # Remove a context
+
+# Save and load images
+docker save -o <file.tar> <image>                 # Save an image to a tar archive file
+docker load -i <file.tar>                         # Load an image from a tar archive file
+
+# Export and import containers
+docker export -o <file.tar> <container>           # Export a container's filesystem to a tar archive file
+docker import <file.tar> <image_name>             # Import a container's filesystem as an image
+
+# Docker registry management
+docker login                                     # Log in to a Docker registry
+docker logout                                    # Log out from a Docker registry
