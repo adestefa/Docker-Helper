@@ -7,12 +7,27 @@
 #  - make it easier to work on CLI
 #  - git level performance
 #  - treat containers like branches
-###################################
+# What is this?
+#  I bounce around a lot, I have a many projects
+#  I forget what I name images/containers
+#  Naming things takes energy, documenting takes time
+#  > let's combine all the above into a simple CLI
+#  Step 1: add a d.txt file in your project dir
+#  Step 2: add image name on first line and container name on second
+#  Step 3: > d go
+#  that's it. You pick a name once.
+#  everything is documented, just look at d.txt for what you named
+#  less time thinking more time doing
+# Note: 'd' is for both Destefano and Docker
+####################################################
 
 VERSION="3.0"
 
-LAST_UPDATE="Sep 21 2024; Aug 13 2024"
+CREATED="Aug 13 2024"
 
+LAST_UPDATE="Sep 21 2024"
+
+# track cmd history
 HISTORY_ON="1"
 
 # history text file
@@ -201,6 +216,7 @@ elif [ "$CMD" == "do" ]; then
     echo "INFO:     D: Load a d.txt file: $1"
 
 
+# note: will stop and rebuild image if already running
 # once d.txt file is created
 # we can take over the whole workflow
 elif [ "$CMD" == "go" ]; then
@@ -218,7 +234,7 @@ elif [ "$CMD" == "go" ]; then
         echo "INFO:    D: User provided d file: $d_file"
     fi
 
-
+    echo "INFO:   D:FILE:${d_file}"
     # -------------------------------
     # d.txt file exists
     # -------------------------------
@@ -272,10 +288,12 @@ elif [ "$CMD" == "go" ]; then
             echo "${CONTAINER_ID}"   >> $DFILE
             echo "INFO:      D: Session data update complete."
 
+        if [ "$1" == "-b" ]; then
             # open browsers
             openBrowser "http://0.0.0.0:80"
             sleep 1
             playCheer
+        fi
 
         else
             echo "INFO:        D: Can't load last, missing image and container names"
@@ -368,7 +386,7 @@ elif [ "$CMD" == "open:docker" ] || [ "$CMD" == "start:docker" ]; then
     fi
 
 # stop docker daemon
-elif [ "$CMD" == "close" ] || [ "$CMD" == "exit" ] || [ "$CMD" == "goodbye" ]; then
+elif [ "$CMD" == "close:docker" ] || [ "$CMD" == "exit" ] || [ "$CMD" == "goodbye" ]; then
     echo "INFO:     D: Exit request..."
     echo "> Are you sure you want to exit? y/n"
     read choice
@@ -511,6 +529,7 @@ elif [ "$CMD" == "find" ] || [ "$CMD" == "find-image" ]; then
 # rebuild and rerun image. $1: image name; $2: container name
 elif [ "$CMD" == "rebuild" ]; then
     echo "INFO:      D: Re-Building image ${1} ${2}"
+    
     docker build -t $1 .
     # rerunning image (image) (container name)
     echo "INFO:      D: Re-Running container ${1} ${2}"
