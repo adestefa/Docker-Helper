@@ -32,3 +32,13 @@
 20240921-1247 >d which    
 20240922-1347 >d cmds    
 20240922-1353 >d go    
+20240925-1637 >d commands -d   
+20240925-1637 >d grep commands run  
+20240925-1638 >d commands -d   
+20240925-1839 >d commands -oc   
+20240925-1839 >d commands -d   
+20240925-1839 >d commands -oc   
+20240925-1840 >d commands -oc   
+20240925-1840 >d commands -d   
+20240925-1843 >d help    
+20240925-1843 >d docs:fastapi    

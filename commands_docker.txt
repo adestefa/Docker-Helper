@@ -1,7 +1,9 @@
 # Display Docker version information
 docker --version
 
-# Show Docker system information
+# Show Docker system informatio
+
+n
 docker info
 
 # Manage images

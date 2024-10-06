@@ -15,7 +15,7 @@ which,inspect                  using current directory find any d files recursev
 build                          build docker image. $1 : image name               
 sh                             open shell to container. Uses d file in current directory
 do                             run a d file from anywhere. $1 : full d file path and name
-go                             we can take over the whole workflow               
+go                             build image, run image, open browser with -b switch             
 stop                           will stop the last run container hash we stored in the data file
 log,logs                       will print logs from the container hash stored in data file
 ps,running,active              list running containers                           

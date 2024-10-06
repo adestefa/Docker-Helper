@@ -21,11 +21,11 @@
 # Note: 'd' is for both Destefano and Docker
 ####################################################
 
-VERSION="3.0"
+VERSION="3.1"
 
 CREATED="Aug 13 2024"
 
-LAST_UPDATE="Sep 21 2024"
+LAST_UPDATE="Sep 23 2024"
 
 # track cmd history
 HISTORY_ON="1"
@@ -133,6 +133,15 @@ elif [ "$CMD" == "commands" ]; then
        cat "${SCRIPT_DIR}/commands_docker.txt" | more  
     fi
 
+
+elif [ "$CMD" == "python-init" ] || [ "$CMD" == "python-start" ] || [ "$CMD" == "start-python" ]; then
+    echo "Creating Python virtual environment.."
+    python3 -m venv venv
+    echo "Activating environment.."
+    source venv/bin/activate
+    echo "Installing requirements.txt..."
+    pip install -r requirements.txt
+    playBell
 
 # check paths
 elif [ "$CMD" == "inspect" ]; then
